@@ -1,50 +1,32 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "stdbool.h"
-#include <malloc.h>
-#include <locale.h>
-
-
-bool comparison(int A[], int B[], int size) {
-	int i, j, key;
-	bool flag = false;
-	for (i = 0; i < size; i++) {
-		key = B[i];
-		for(j = 0; j < size; j++){
-			if (A[j] == key) {
-				flag = true;
-				B[i] = size + 1;
-			    flag;
-				break;
-			} 
-		}
-	}
-	return flag;
-}
 
 void main() {
-	int n = 2;
-	int Arr[2][2] = { 1, 2, 1, 2 };
-	int B[2] = { 0,0 };
-	int C[2] = { 0,0 };
-	int Z[2] = { 0,0 };
+	int A[2][3] = { 2,4,6,3,7,2 };
 	int i, j;
-	bool flag1 = false;
-	bool flag2 = false;
-	for (i = 0; i < n; i++) {
-		B[i] = i + 1;
+	int B[2] = { 0,0 }; // заменим 2 столбец в массиве A
+	int n = 2;
+	for (i = 0; i < 2; i++) {
+		if (i != 0)
+			printf("\n");
+		for (j = 0; j < 3; j++) {
+			printf("%d ", A[i][j]);
+		}
 	}
 
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
-			C [i] = Arr[i][j];
-			Z[i] = Arr[j][i];
-		}
-		flag1 = (comparison(C, B, n));
-		flag2 = (comparison(Z, B, n));
+	for (i = 0; i < 2; i++) {
+		A[i][n - 1] = B[i];
 	}
-	if (flag1 && flag2)
-		printf("Yes");
-	else
-		printf("No");
+
+	printf("\n\n");
+	for (i = 0; i < 2; i++) {
+		if (i != 0)
+			printf("\n");
+		for (j = 0; j < 3; j++) {
+			printf("%d ", A[i][j]);
+		}
+	}
+
+	
 }
