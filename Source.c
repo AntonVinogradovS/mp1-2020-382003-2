@@ -1,32 +1,29 @@
-#include "stdio.h"
-#include "stdlib.h"
-#include "stdbool.h"
+#include <stdio.h>
+#include <ctype.h>
+#include <locale.h>
+#include <malloc.h>
+#include < string.h >
 
-void main() {
-	int A[2][3] = { 2,4,6,3,7,2 };
+void main()
+{
+	char Str[128]; // не стал делать динамический, потому что, мне кажется, странно спрашивать пользователя, строку какой длины он хочет ввести
 	int i, j;
-	int B[2] = { 0,0 }; // заменим 2 столбец в массиве A
-	int n = 2;
-	for (i = 0; i < 2; i++) {
-		if (i != 0)
-			printf("\n");
-		for (j = 0; j < 3; j++) {
-			printf("%d ", A[i][j]);
+	char StrTmp[1];
+	gets(Str);
+	int rez = atoi(Str);
+	int tmp = 0;
+	j = 0;
+	for (i = 2; Str[i] != 0; i++) {
+		StrTmp[0] = Str[i];
+		tmp = atoi(StrTmp);
+			if (Str[i - 1] == '+') {
+				rez += tmp;
+			}
+			else {
+				rez -= tmp;
+			}
+
 		}
-	}
+	printf("%d\n", rez);
 
-	for (i = 0; i < 2; i++) {
-		A[i][n - 1] = B[i];
 	}
-
-	printf("\n\n");
-	for (i = 0; i < 2; i++) {
-		if (i != 0)
-			printf("\n");
-		for (j = 0; j < 3; j++) {
-			printf("%d ", A[i][j]);
-		}
-	}
-
-	
-}
